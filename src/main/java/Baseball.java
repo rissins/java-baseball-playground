@@ -1,84 +1,52 @@
-import java.util.Scanner;
-
-
 public class Baseball {
-    private char one;
-    private char two;
-    private char three;
-    public char[] stringArray;
-    public char[] saveArray;
+    private char[] randomNumbers;
+    public char[] inputNumbers;
 
-    public void ranNum() {
+    public void setNumberRandom() {
+        randomNumbers = new char[3];
 //        one = String.valueOf((Math.random()*9)+1);
 //        two = String.valueOf((Math.random()*9)+1);
 //        three = String.valueOf((Math.random()*9)+1);
-        one = Character.forDigit(1, 10);
-        two = Character.forDigit(2, 10);
-        three = Character.forDigit(3, 10);
+        randomNumbers[0] = Character.forDigit(1, 10);
+        randomNumbers[1] = Character.forDigit(2, 10);
+        randomNumbers[2] = Character.forDigit(3, 10);
     }
 
-    public void playerNum(int a) {
-        saveArray = new char[3];
-        String s = String.valueOf(a);
-        stringArray = s.toCharArray();
-        for (int i = 0; i < stringArray.length; i++) {
-            saveArray[i] = stringArray[i];
-        }
+    public void setNumberPlayer(String input) {
+        inputNumbers = new char[3];
+        inputNumbers[0] = input.charAt(0);
+        inputNumbers[1] = input.charAt(1);
+        inputNumbers[2] = input.charAt(2);
     }
 
-    public int setNum_Strike() {
+    public int setNumStrike() {
         int strikeCount = 0;
 
-        if (one == saveArray[0]) {
+        if (randomNumbers[0] == inputNumbers[0]) {
             strikeCount++;
         }
-        if (two == saveArray[1]) {
+        if (randomNumbers[1] == inputNumbers[1]) {
             strikeCount++;
         }
-        if (three == saveArray[2]) {
+        if (randomNumbers[2] == inputNumbers[2]) {
             strikeCount++;
         }
 
         return strikeCount;
     }
 
-    public int setNum_Ball() {
+    public int setNumBall() {
         int ballCount = 0;
-        if ((one == saveArray[1] || one == saveArray[2])) {
+        if ((randomNumbers[0] == inputNumbers[1] || randomNumbers[0] == inputNumbers[2])) {
             ballCount++;
         }
-        if (two == saveArray[0] || two == saveArray[2]) {
+        if (randomNumbers[1] == inputNumbers[0] || randomNumbers[1] == inputNumbers[2]) {
             ballCount++;
         }
-        if (three == saveArray[0] || three == saveArray[1]) {
+        if (randomNumbers[2] == inputNumbers[0] || randomNumbers[2] == inputNumbers[1]) {
             ballCount++;
         }
 
         return ballCount;
-    }
-
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-//        변수명 a 극혐
-        Baseball baseball = new Baseball();
-        baseball.ranNum();
-
-        System.out.print("숫자를 입력해 주세요 : ");
-        int input = scanner.nextInt();
-
-        baseball.playerNum(input);
-        baseball.setNum_Ball();
-        baseball.setNum_Strike();
-        if (baseball.setNum_Ball() > 0) {
-            System.out.print(baseball.setNum_Ball() + "볼 ");
-        }
-        if (baseball.setNum_Strike() > 0) {
-            System.out.print(baseball.setNum_Strike() + "스트라이크");
-        }
-        if (baseball.setNum_Strike() == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-
-        }
     }
 }
