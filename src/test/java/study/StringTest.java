@@ -43,16 +43,10 @@ public class StringTest {
     @Test
     @DisplayName("문자의 위치를 벗어날 때 테스트")
     void charAt(){
-        assertThatThrownBy(() -> {"abc".charAt(5); }).isInstanceOf(StringIndexOutOfBoundsException.class)
+        assertThatThrownBy(() -> {"abc".charAt(5); }).isInstanceOf(StringIndexOutOfBoundsException.class);
 //                .hasMessage("index: %s, Size: %s", 2, 2)
 //                .hasMessageContaining("2");
-                .hasMessage("Index: %s, Size: %s", 2, 2)
-                .hasMessageStartingWith("Index: 2")
-                .hasMessageContaining("2")
-                .hasMessageEndingWith("Size: 2")
-                .hasMessageMatching("Index: \\d+, Size: \\d+")
-                .hasCauseInstanceOf(IOException.class)
-                .hasStackTraceContaining("java.io.IOException");
+
     }
 
 
