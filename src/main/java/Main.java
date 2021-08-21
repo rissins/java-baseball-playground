@@ -6,5 +6,7 @@ public class Main {
         ComputerNumber computerNumber = new ComputerNumber();
         List<Integer> number = computerNumber.createRandomNumber();
         System.out.println(number);
+        PlayerNumber playerNumber  = new PlayerNumber();
+        playerNumber.playerNumber();
     }
 }
