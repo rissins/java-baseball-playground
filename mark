@@ -1,0 +1,37 @@
+
+ArrayList tvList = new ArrayList();
+tvList.add(new Tv());
+Tv t = (Tv)tvList.get(0);
+
+
+
+ ArrayList<Tv> tvList = new ArrayList<Tv>();
+ tvList.add(new Tv());
+ Tv t = tvList.get(0);
+ 
+
+ public class ArrayList extends AbstractList{
+    private transient Tv[] elementData;
+    public boolean add(Tv o){ 내용 생략 }
+    public Tv get(int index){ 내용 생략 }
+     .....
+ }
+
+
+ class Box<T> {}
+ 
+ Box<String> b = new Box<String>~~(~~);
+ 
+
+ ArrayList<Tv>       list = new ArrayList<Tv>(); // OK, 일치
+ ArrayList<Product>  list = new ArrayList<Tv>(); // error, 불일치
+ 
+
+  ArrayList<Product> list = new ArrayList<Product>();
+  list.add(new Product());
+  list.add(new Tv());      // OK
+  list.add(new Audio());   // OK
+
+  Product p = list.get(0);
+  Tv t = (Tv)list.get(1);
+  
